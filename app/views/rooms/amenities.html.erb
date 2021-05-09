@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-md-3">
+    <%= render 'room_menu' %>
+  </div>
+  <div class="col-md-9">
+    <div class="panel panel-default">
+
+      <div class="panel-heading">
+        アメニティ
+      </div>
+
+      <div class="panel-body">
+        <div class="container">
+          <%= form_for @room do |f| %>
+
+              <div class="row form-group">
+                <div class="col-md-4">
+                  <%= f.check_box :is_tv %> テレビ
+                </div>
+                <div class="col-md-4">
+                  <%= f.check_box :is_kitchen %> キッチン
+                </div>
+                <div class="col-md-4">
+                  <%= f.check_box :is_internet %> インターネット環境
+                </div>
+              </div>
+
+              <div class="row form-group">
+                <div class="col-md-4">
+                  <%= f.check_box :is_heating %> 暖房
+                </div>
+                <div class="col-md-4">
+                  <%= f.check_box :is_air %> エアコン
+                </div>
+              </div>
+              <br/><br/>
+
+              <div class="text-center">
+                <%= f.submit "決定", class: "btn btn-form" %>
+              </div>
+
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-md-3">
+    <div class="center">
+      <% if @user.avatar.attached? %>
+         <%= image_tag @user.avatar, class: "avatar-full" %>
+      <% end %>
+      <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
+        <div class="row">
+          <div class="form-group">
+            <span class="btn btn-default btn-file text-babu">
+              <i class="fa fa-cloud-upload" aria-hidden="true"></i> 写真を選んで下さい
+              <%= f.file_field :avatar %>
+            </span>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <%= f.submit "写真を登録する", class: "btn btn-form" %>
+        </div>
+        </br>
+      <% end %>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">プロフィール詳細</div>
+      <div class="panel-body">
+        <ul class="sidebar-list">
+          <li>Eメールアドレス<span class="pull-right icon-babu"><i class="fa fa-check-circle-o"></i></span></li>
+          <li>電話番号<span class="pull-right icon-babu"><i class="fa fa-check-circle-o"></i></span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-9">
+    <h2><%= @user.fullname %></h2>
+
+    <div class="description row-space-3">
+      <%= @user.description %>
+    </div>
+
+    <h4>お部屋リスト (<%= @rooms.length %>)</h4><br/>
+
+    <div class="row">
+      <%= render partial: "rooms/rooms_list", locals: {rooms: @rooms} %>
+    </div>
+    <br/>
+
+    <h4>ゲストからのレビュー (<%= @guest_reviews.count %>)</h4>
+    <div class="row">
+      <%= render "reviews/guest_list" %>
+    </div>
+    <br/>
+
+    <h4>ホストからのレビュー (<%= @host_reviews.count %>)</h4>
+    <div class="row">
+      <%= render "reviews/host_list" %>
+    </div>
+
+  </div>
+</div>
